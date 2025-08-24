@@ -7,8 +7,6 @@ Description: >
 Globals:
   Function:
     Tracing: Active
-    CodeUri: solicitudes/
-
     Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
     Runtime: java21
     Timeout: 30
@@ -27,6 +25,8 @@ Resources:
   GetSolicitudByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: solicitudes/
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudPorIdUseCase
       Environment:
         Variables:
           SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudPorIdUseCase
@@ -44,6 +44,8 @@ Resources:
   GetSolicitudesFunction:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: solicitudes/
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudesUseCase
       Environment:
         Variables:
           SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudesUseCase
@@ -61,6 +63,8 @@ Resources:
   PutSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: solicitudes/
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.CrearSolicitudUseCase
       Environment:
         Variables:
           SPRING_CLOUD_FUNCTION_DEFINITION: crearSolicitudUseCase
@@ -78,6 +82,8 @@ Resources:
   DeleteSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: solicitudes/
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.EliminarSolicitudUseCase
       Environment:
         Variables:
           SPRING_CLOUD_FUNCTION_DEFINITION: eliminarSolicitudUseCase

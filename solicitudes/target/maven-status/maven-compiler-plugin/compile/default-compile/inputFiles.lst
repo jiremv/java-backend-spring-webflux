@@ -1,1 +1,11 @@
-P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\org\example\Main.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\entity\Solicitud.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\handler\EliminarSolicitudUseCase.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\PrimingResource.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\entity\Solicitudes.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\handler\CrearSolicitudUseCase.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\handler\ObtenerSolicitudPorIdUseCase.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\SpringBootSampleApplication.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\dao\SolicitudDao.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\dao\SolicitudMapper.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\dao\DynamoSolicitudDao.java
+P:\portafolio\java-backend-spring-webflux\solicitudes\src\main\java\software\amazonaws\example\solicitud\solicitud\handler\ObtenerSolicitudesUseCase.java

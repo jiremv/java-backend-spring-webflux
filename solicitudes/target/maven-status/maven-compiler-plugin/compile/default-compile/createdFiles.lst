@@ -1,1 +1,11 @@
-org\example\Main.class
+software\amazonaws\example\solicitud\solicitud\dao\SolicitudMapper.class
+software\amazonaws\example\solicitud\solicitud\entity\Solicitud.class
+software\amazonaws\example\solicitud\solicitud\handler\CrearSolicitudUseCase.class
+software\amazonaws\example\solicitud\solicitud\dao\SolicitudDao.class
+software\amazonaws\example\solicitud\solicitud\handler\ObtenerSolicitudPorIdUseCase.class
+software\amazonaws\example\solicitud\solicitud\PrimingResource.class
+software\amazonaws\example\solicitud\solicitud\handler\EliminarSolicitudUseCase.class
+software\amazonaws\example\solicitud\solicitud\dao\DynamoSolicitudDao.class
+software\amazonaws\example\solicitud\solicitud\handler\ObtenerSolicitudesUseCase.class
+software\amazonaws\example\solicitud\solicitud\entity\Solicitudes.class
+software\amazonaws\example\solicitud\solicitud\SpringBootSampleApplication.class
