@@ -6,11 +6,15 @@ Description: >
 
 Globals:
   Function:
-    Tracing: Active
-    Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+    #Tracing: Active
+    #Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
     Runtime: java21
-    Timeout: 30
     MemorySize: 1024
+    Timeout: 30
+    Architectures:
+      - x86_64
+    Tracing: Active
+    CodeUri: .
     Environment:
       Variables:
         SOLICITUD_TABLE_NAME: !Ref SolicitudesTable
@@ -26,77 +30,77 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudPorIdUseCase
-      Environment:
-        Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudPorIdUseCase
-      Policies:
-        - DynamoDBReadPolicy:
-            TableName: !Ref SolicitudesTable
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudPorIdUseCase::handleRequest
+      #Environment:
+      #  Variables:
+      #    SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudPorIdUseCase
+      #Policies:
+      #  - DynamoDBReadPolicy:
+      #      TableName: !Ref SolicitudesTable
       Events:
         GetRequestById:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
             Path: /solicitudes/{id}
-            Method: get
+            Method: GET
 
   GetSolicitudesFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudesUseCase
-      Environment:
-        Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudesUseCase
-      Policies:
-        - DynamoDBReadPolicy:
-            TableName: !Ref SolicitudesTable
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudesUseCase::handleRequest
+      #Environment:
+      #  Variables:
+      #    SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudesUseCase
+      #Policies:
+      #  - DynamoDBReadPolicy:
+      #      TableName: !Ref SolicitudesTable
       Events:
         GetRequest:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
             Path: /solicitudes
-            Method: get
+            Method: GET
 
   PutSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: software.amazonaws.example.solicitud.solicitud.handler.CrearSolicitudUseCase
-      Environment:
-        Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: crearSolicitudUseCase
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref SolicitudesTable
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.CrearSolicitudUseCase::handleRequest
+      #Environment:
+      #  Variables:
+      #    SPRING_CLOUD_FUNCTION_DEFINITION: crearSolicitudUseCase
+      #Policies:
+      #  - DynamoDBCrudPolicy:
+      #      TableName: !Ref SolicitudesTable
       Events:
         PutRequest:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
             Path: /solicitudes/{id}
-            Method: put
+            Method: PUT
 
   DeleteSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: software.amazonaws.example.solicitud.solicitud.handler.EliminarSolicitudUseCase
-      Environment:
-        Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: eliminarSolicitudUseCase
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref SolicitudesTable
+      Handler: software.amazonaws.example.solicitud.solicitud.handler.EliminarSolicitudUseCase::handleRequest
+      #Environment:
+      #  Variables:
+      #    SPRING_CLOUD_FUNCTION_DEFINITION: eliminarSolicitudUseCase
+      #Policies:
+      #  - DynamoDBCrudPolicy:
+      #      TableName: !Ref SolicitudesTable
       Events:
         PutRequest:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
             Path: /solicitudes/{id}
-            Method: delete
+            Method: DELETE
 
   SolicitudesTable:
     Type: AWS::DynamoDB::Table
