@@ -14,7 +14,8 @@ Globals:
     Architectures:
       - x86_64
     Tracing: Active
-    CodeUri: .
+    CodeUri: Solicitudes/Target/Solicitudes-1.0-Snapshot-Lambda.Jar
+
     Environment:
       Variables:
         SOLICITUD_TABLE_NAME: !Ref SolicitudesTable
@@ -29,7 +30,8 @@ Resources:
   GetSolicitudByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: .
+      CodeUri: Solicitudes/Target/Solicitudes-1.0-Snapshot-Lambda.Jar
+
       Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudPorIdUseCase::handleRequest
       #Environment:
       #  Variables:
@@ -48,7 +50,8 @@ Resources:
   GetSolicitudesFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: .
+      CodeUri: Solicitudes/Target/Solicitudes-1.0-Snapshot-Lambda.Jar
+
       Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudesUseCase::handleRequest
       #Environment:
       #  Variables:
@@ -67,7 +70,8 @@ Resources:
   PutSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: .
+      CodeUri: Solicitudes/Target/Solicitudes-1.0-Snapshot-Lambda.Jar
+
       Handler: software.amazonaws.example.solicitud.solicitud.handler.CrearSolicitudUseCase::handleRequest
       #Environment:
       #  Variables:
@@ -86,7 +90,8 @@ Resources:
   DeleteSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: .
+      CodeUri: Solicitudes/Target/Solicitudes-1.0-Snapshot-Lambda.Jar
+
       Handler: software.amazonaws.example.solicitud.solicitud.handler.EliminarSolicitudUseCase::handleRequest
       #Environment:
       #  Variables:
