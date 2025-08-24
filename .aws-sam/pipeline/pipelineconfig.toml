@@ -1,0 +1,23 @@
+version = 0.1
+[default.pipeline_bootstrap.parameters]
+oidc_provider_url = "https://token.actions.githubusercontent.com"
+oidc_client_id = "sts.amazonaws.com"
+github_org = "jiremv"
+github_repo = "java-backend-spring-webflux"
+deployment_branch = "main"
+oidc_provider = "github-actions"
+permissions_provider = "OpenID Connect (OIDC)"
+
+[webflux-dev.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::545200407638:role/aws-sam-cli-managed-webflux-d-PipelineExecutionRole-pCrw4qMmKTBJ"
+cloudformation_execution_role = "arn:aws:iam::545200407638:role/aws-sam-cli-managed-webfl-CloudFormationExecutionRo-194jC7CqS1KY"
+artifacts_bucket = "aws-sam-cli-managed-webflux-dev-pi-artifactsbucket-g29icozilw14"
+image_repository = ""
+region = "us-east-1"
+
+[webflux-prod.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::545200407638:role/aws-sam-cli-managed-webflux-p-PipelineExecutionRole-6JcKqn58GMnS"
+cloudformation_execution_role = "arn:aws:iam::545200407638:role/aws-sam-cli-managed-webfl-CloudFormationExecutionRo-FtUxYVfx1Mbb"
+artifacts_bucket = "aws-sam-cli-managed-webflux-prod-p-artifactsbucket-zkske6gnhelp"
+image_repository = ""
+region = "us-east-2"
