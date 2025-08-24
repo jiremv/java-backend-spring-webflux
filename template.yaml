@@ -1,20 +1,20 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  lambda-springboot-sample
+  lambda-springboot
   Sample SAM Template for lambda-springboot
 
 Globals:
   Function:
     Tracing: Active
-    CodeUri: target/springboot-lambda-function-1.0.0-SNAPSHOT-aws.jar
+    CodeUri: .
     Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
     Runtime: java21
     Timeout: 30
     MemorySize: 1024
     Environment:
       Variables:
-        PRODUCT_TABLE_NAME: !Ref ProductsTable
+        SOLICITUD_TABLE_NAME: !Ref SolicitudesTable
 
 Resources:
   MyApi:
@@ -23,75 +23,75 @@ Resources:
       StageName: prod
       Name: My Lambda springboot Sample API
 
-  GetProductByIdFunction:
+  GetSolicitudByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
       Environment:
         Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: getProductByIdFunction
+          SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudPorIdUseCase
       Policies:
         - DynamoDBReadPolicy:
-            TableName: !Ref ProductsTable
+            TableName: !Ref SolicitudesTable
       Events:
         GetRequestById:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
-            Path: /products/{id}
+            Path: /solicitudes/{id}
             Method: get
 
-  GetProductsFunction:
+  GetSolicitudesFunction:
     Type: AWS::Serverless::Function
     Properties:
       Environment:
         Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: getAllProductsFunction
+          SPRING_CLOUD_FUNCTION_DEFINITION: obtenerSolicitudesUseCase
       Policies:
         - DynamoDBReadPolicy:
-            TableName: !Ref ProductsTable
+            TableName: !Ref SolicitudesTable
       Events:
         GetRequest:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
-            Path: /products
+            Path: /solicitudes
             Method: get
 
-  PutProductFunction:
+  PutSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
       Environment:
         Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: createProductFunction
+          SPRING_CLOUD_FUNCTION_DEFINITION: crearSolicitudUseCase
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref ProductsTable
+            TableName: !Ref SolicitudesTable
       Events:
         PutRequest:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
-            Path: /products/{id}
+            Path: /solicitudes/{id}
             Method: put
 
-  DeleteProductFunction:
+  DeleteSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
       Environment:
         Variables:
-          SPRING_CLOUD_FUNCTION_DEFINITION: deleteProductFunction
+          SPRING_CLOUD_FUNCTION_DEFINITION: eliminarSolicitudUseCase
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref ProductsTable
+            TableName: !Ref SolicitudesTable
       Events:
         PutRequest:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
-            Path: /products/{id}
+            Path: /solicitudes/{id}
             Method: delete
 
-  ProductsTable:
+  SolicitudesTable:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
@@ -105,4 +105,4 @@ Resources:
 Outputs:
   ApiEndpoint:
     Description: "API Gateway endpoint URL for Prod stage for Springboot sample function"
-    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/prod/products"
+    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/prod/solicitudes"

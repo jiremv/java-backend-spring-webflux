@@ -1,15 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-package software.amazonaws.example.product.product;
+package software.amazonaws.example.solicitud.solicitud;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.xray.entities.TraceHeader;
 import com.amazonaws.xray.entities.TraceID;
 import com.amazonaws.xray.interceptors.TracingInterceptor;
 import org.joda.time.DateTime;
-import software.amazonaws.example.product.product.entity.Product;
-import software.amazonaws.example.product.product.entity.Products;
+import software.amazonaws.example.solicitud.solicitud.entity.Solicitud;
+import software.amazonaws.example.solicitud.solicitud.entity.Solicitudes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

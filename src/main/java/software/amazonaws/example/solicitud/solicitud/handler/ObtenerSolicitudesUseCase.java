@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-package software.amazonaws.example.product.product.handler;
+package software.amazonaws.example.solicitud.solicitud.handler;
 
 import java.util.function.Function;
 
@@ -10,18 +10,18 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import software.amazon.awssdk.http.HttpStatusCode;
-import software.amazonaws.example.product.product.dao.ProductDao;
+import software.amazonaws.example.solicitud.solicitud.dao.SolicitudDao;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GetAllProductsFunction implements Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
-  private final ProductDao productDao;
+public class ObtenerSolicitudesUseCase implements Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+  private final SolicitudDao solicitudDao;
   private final ObjectMapper objectMapper;
 
-  public GetAllProductsFunction(ProductDao productDao, ObjectMapper objectMapper) {
-    this.productDao = productDao;
+  public ObtenerSolicitudesUseCase(SolicitudDao solicitudDao, ObjectMapper objectMapper) {
+    this.solicitudDao = solicitudDao;
     this.objectMapper = objectMapper;
   }
 
@@ -35,7 +35,7 @@ public class GetAllProductsFunction implements Function<APIGatewayProxyRequestEv
     try {
       return new APIGatewayProxyResponseEvent()
         .withStatusCode(HttpStatusCode.OK)
-        .withBody(objectMapper.writeValueAsString(productDao.getAllProduct()));
+        .withBody(objectMapper.writeValueAsString(solicitudDao.getAllSolicitud()));
     } catch (JsonProcessingException je) {
       je.printStackTrace();
       return new APIGatewayProxyResponseEvent()

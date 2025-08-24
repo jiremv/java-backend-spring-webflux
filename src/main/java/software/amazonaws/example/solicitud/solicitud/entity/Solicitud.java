@@ -1,9 +1,9 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-package software.amazonaws.example.product.product.entity;
+package software.amazonaws.example.solicitud.solicitud.entity;
 
 import java.math.BigDecimal;
 
-public record Product(String id, String name, BigDecimal price) {
+public record Solicitud(String id, String name, BigDecimal price) {
 }

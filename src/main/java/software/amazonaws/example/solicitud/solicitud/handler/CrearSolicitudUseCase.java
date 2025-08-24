@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-package software.amazonaws.example.product.product.handler;
+package software.amazonaws.example.solicitud.solicitud.handler;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
@@ -10,18 +10,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import software.amazon.awssdk.http.HttpStatusCode;
-import software.amazonaws.example.product.product.dao.ProductDao;
-import software.amazonaws.example.product.product.entity.Product;
+import software.amazonaws.example.solicitud.solicitud.dao.SolicitudDao;
+import software.amazonaws.example.solicitud.solicitud.entity.Solicitud;
 
 import java.util.function.Function;
 
 @Component
-public class CreateProductFunction implements Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
-  private final ProductDao productDao;
+public class CrearSolicitudUseCase implements Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+  private final SolicitudDao solicitudDao;
   private final ObjectMapper objectMapper;
 
-  CreateProductFunction(ProductDao productDao, ObjectMapper objectMapper) {
-    this.productDao = productDao;
+  CrearSolicitudUseCase(SolicitudDao solicitudDao, ObjectMapper objectMapper) {
+    this.solicitudDao = solicitudDao;
     this.objectMapper = objectMapper;
   }
 
@@ -35,16 +35,16 @@ public class CreateProductFunction implements Function<APIGatewayProxyRequestEve
     try {
       String id = requestEvent.getPathParameters().get("id");
       String jsonPayload = requestEvent.getBody();
-      Product product = objectMapper.readValue(jsonPayload, Product.class);
-      if (!product.id().equals(id)) {
+      Solicitud solicitud = objectMapper.readValue(jsonPayload, Solicitud.class);
+      if (!solicitud.id().equals(id)) {
         return new APIGatewayProxyResponseEvent()
           .withStatusCode(HttpStatusCode.BAD_REQUEST)
-          .withBody("Product ID in the body does not match path parameter");
+          .withBody("Solicitud ID in the body does not match path parameter");
       }
-      productDao.putProduct(product);
+      solicitudDao.putSolicitud(solicitud);
       return new APIGatewayProxyResponseEvent()
         .withStatusCode(HttpStatusCode.CREATED)
-        .withBody("Product with id = " + id + " created");
+        .withBody("Solicitud with id = " + id + " created");
     } catch (Exception e) {
       e.printStackTrace();
       return new APIGatewayProxyResponseEvent()

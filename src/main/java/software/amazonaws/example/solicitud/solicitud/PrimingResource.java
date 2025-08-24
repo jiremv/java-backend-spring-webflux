@@ -3,21 +3,21 @@
  * To learn more about SnapStart and Priming, refer to https://aws.amazon.com/blogs/compute/reducing-java-cold-starts-on-aws-lambda-functions-with-snapstart/
  **/
 
-package software.amazonaws.example.product.product;
+package software.amazonaws.example.solicitud.solicitud;
 
 import org.crac.Context;
 import org.crac.Core;
 import org.crac.Resource;
 import org.springframework.context.annotation.Configuration;
-import software.amazonaws.example.product.product.dao.DynamoProductDao;
+import software.amazonaws.example.solicitud.solicitud.dao.DynamoSolicitudDao;
 
 @Configuration
 public class PrimingResource implements Resource {
 
-  private final DynamoProductDao productDao;
+  private final DynamoSolicitudDao solicitudDao;
 
-  public PrimingResource(DynamoProductDao productDao) {
-    this.productDao = productDao;
+  public PrimingResource(DynamoSolicitudDao solicitudDao) {
+    this.solicitudDao = solicitudDao;
     Core.getGlobalContext().register(this);
   }
 
@@ -25,7 +25,7 @@ public class PrimingResource implements Resource {
   public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
     System.out.println("beforeCheckpoint hook");
     //Below line would initialize the AWS SDK DynamoDBClient class. This technique is called "Priming".
-    productDao.describeTable();
+    solicitudDao.describeTable();
   }
 
   @Override
