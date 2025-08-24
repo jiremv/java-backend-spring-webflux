@@ -12,17 +12,14 @@ import software.amazonaws.example.solicitud.solicitud.entity.Solicitud;
 
 import java.util.Optional;
 import java.util.function.Function;
-
 @Component
 public class ObtenerSolicitudPorIdUseCase implements Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
   private final SolicitudDao solicitudDao;
   private final ObjectMapper objectMapper;
-
   ObtenerSolicitudPorIdUseCase(SolicitudDao solicitudDao, ObjectMapper objectMapper) {
     this.solicitudDao = solicitudDao;
     this.objectMapper = objectMapper;
   }
-
   @Override
   public APIGatewayProxyResponseEvent apply(APIGatewayProxyRequestEvent requestEvent) {
     if (!requestEvent.getHttpMethod().equals(HttpMethod.GET.name())) {

@@ -1,6 +1,3 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
-
 package software.amazonaws.example.solicitud.solicitud;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
@@ -10,15 +7,11 @@ import com.amazonaws.xray.interceptors.TracingInterceptor;
 import org.joda.time.DateTime;
 import software.amazonaws.example.solicitud.solicitud.entity.Solicitud;
 import software.amazonaws.example.solicitud.solicitud.entity.Solicitudes;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.util.HashSet;
-
 @SpringBootApplication
 public class SpringBootSampleApplication {
-
   public static void main(String[] args) {
     SpringApplication.run(SpringBootSampleApplication.class, args);
   }

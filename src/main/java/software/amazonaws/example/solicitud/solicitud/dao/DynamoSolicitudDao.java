@@ -1,6 +1,3 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
-
 package software.amazonaws.example.solicitud.solicitud.dao;
 
 import com.amazonaws.xray.interceptors.TracingInterceptor;
@@ -15,7 +12,6 @@ import software.amazon.awssdk.services.dynamodb.model.*;
 import software.amazonaws.example.solicitud.solicitud.entity.Solicitud;
 import software.amazonaws.example.solicitud.solicitud.entity.Solicitudes;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

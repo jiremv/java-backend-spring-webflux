@@ -1,6 +1,3 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
-
 package software.amazonaws.example.solicitud.solicitud.handler;
 
 import java.util.function.Function;
@@ -14,17 +11,14 @@ import software.amazonaws.example.solicitud.solicitud.dao.SolicitudDao;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
-
 @Component
 public class ObtenerSolicitudesUseCase implements Function<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
   private final SolicitudDao solicitudDao;
   private final ObjectMapper objectMapper;
-
   public ObtenerSolicitudesUseCase(SolicitudDao solicitudDao, ObjectMapper objectMapper) {
     this.solicitudDao = solicitudDao;
     this.objectMapper = objectMapper;
   }
-
   @Override
   public APIGatewayProxyResponseEvent apply(APIGatewayProxyRequestEvent requestEvent) {
     if (!requestEvent.getHttpMethod().equals(HttpMethod.GET.name())) {
