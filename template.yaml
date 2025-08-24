@@ -25,7 +25,7 @@ Resources:
   GetSolicitudByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: solicitudes/
+      CodeUri: .
       Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudPorIdUseCase
       Environment:
         Variables:
@@ -44,7 +44,7 @@ Resources:
   GetSolicitudesFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: solicitudes/
+      CodeUri: .
       Handler: software.amazonaws.example.solicitud.solicitud.handler.ObtenerSolicitudesUseCase
       Environment:
         Variables:
@@ -63,7 +63,7 @@ Resources:
   PutSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: solicitudes/
+      CodeUri: .
       Handler: software.amazonaws.example.solicitud.solicitud.handler.CrearSolicitudUseCase
       Environment:
         Variables:
@@ -82,7 +82,7 @@ Resources:
   DeleteSolicitudFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: solicitudes/
+      CodeUri: .
       Handler: software.amazonaws.example.solicitud.solicitud.handler.EliminarSolicitudUseCase
       Environment:
         Variables:
