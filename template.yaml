@@ -15,7 +15,7 @@ Globals:
       - x86_64
     Tracing: Active
     Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
-    CodeUri: solicitudes/target/solicitudes-1.0-SNAPSHOT-lambda.jar
+    CodeUri: solicitudes/
 
     Environment:
       Variables:
